@@ -2,7 +2,8 @@ import React from 'react';
 
 function Regle(props) {
   return (
-    <div>Règles :
+    <div>
+      Règles :
       <ul>
         <li>Le but du jeu est de créer un palindrome qui existe dans le dictionnaire (mot ou prenom) avec les lettres proposées.</li>
         <li>Chaque lettre à disposition ne revient qu'une seule fois dans le mot.</li>
@@ -10,7 +11,7 @@ function Regle(props) {
         <li>Le palindrome doit etre correctement orthographié : rêver sera correct mais pas revêr.</li>
       </ul>
     </div>
-    );
+  );
 }
 
 export default Regle;

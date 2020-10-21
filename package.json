@@ -17,8 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext js,jsx src",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint --ext js,jsx src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,7 +28,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint"]
+    "*.{js,jsx}": ["./node_modules/.bin/eslint — fix", "git add"]
   },
   "browserslist": {
     "production": [

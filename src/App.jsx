@@ -73,7 +73,7 @@ function App() {
         ? (
           <div>
             <Timer minutes={0} secondes={1} timer={checkTimer} />
-            <Score score={scoreJoueur} />
+            <Score score={scoreJoueur} /> 
             <Regle />
             <LettreChoisie lettres={reponseJoueur} />
           </div>
