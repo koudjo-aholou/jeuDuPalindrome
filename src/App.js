@@ -6,12 +6,14 @@ import Timer from './Timer';
 import {listePalindrome} from './data';
 import { palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin } from './module/module';
 import LettreChoisie from './LettreChoisie';
+import Score from './Score';
 
 function App() {
   const [reponsePalindrome, setReponsePalindrome] = useState('');
   const [reponseJoueur, setReponseJoueur] = useState('');
   const [jeu, setJeu] = useState({});
   const [palindromeDecoupe,setPalindromeDecoupe] = useState([]);
+  const [scoreJoueur, setScoreJoueur] = useState(0);
 
   const debutJeu = (listePalindrome) =>{
     setJeu({start:false, end: false, win: false});
@@ -30,6 +32,8 @@ function App() {
     setReponseJoueur(updateRepJ);
     if(checkIfPlayerWin(updateRepJ,reponsePalindrome)){
       setJeu({...jeu, win: true});
+      let majScore = scoreJoueur + 1;
+      setScoreJoueur(majScore)
     };
   }
 
@@ -62,7 +66,7 @@ function App() {
 
   return (
     <div>
-     { jeu.start ? <div><Timer/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
+     { jeu.start ? <div><Timer/><Score score={scoreJoueur}/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
       {jeu.end ? <div><p> Votre réponse : {reponseJoueur}</p> <p> La bonne réponse etait {reponsePalindrome}</p></div> : ''}
       {jeu.start && !jeu.end ? afficherLettre() : ''}
       {jeu.start && !jeu.end && !jeu.win ? supprimerLettre() : ''}
