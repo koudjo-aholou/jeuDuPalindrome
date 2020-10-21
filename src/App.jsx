@@ -78,7 +78,12 @@ function App() {
             <LettreChoisie lettres={reponseJoueur} />
           </div>
         )
-        : <p>Cliquez pour commencer une partie</p>}
+        : (
+          <div>
+            <Regle />
+            <p>Cliquez pour commencer une partie !</p>
+          </div>
+        )}
       { jeu.end || jeu.endTime
         ? (
           <div>
@@ -98,7 +103,7 @@ function App() {
         : ''}
       {
        !jeu.start || (jeu.end && !jeu.endTime)
-         ? <button type="button" onClick={() => { debutJeu(listePalindrome); }}>Start !</button>
+         ? <button type="button" onClick={() => { debutJeu(listePalindrome); }}>Start</button>
          : ''
       }
       {
