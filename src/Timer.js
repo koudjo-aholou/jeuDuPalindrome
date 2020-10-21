@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 
 export default class Timer extends Component {
-    state = {
-        minutes: 5,
-        seconds: 0,
-    }
-
+  constructor(props) {
+    super(props);
+    this.state = {
+        minutes: 0,
+        seconds: 10,
+    };
+  }
     componentDidMount() {
         this.myInterval = setInterval(() => {
             const { seconds, minutes } = this.state
-
             if (seconds > 0) {
                 this.setState(({ seconds }) => ({
                     seconds: seconds - 1
@@ -17,7 +18,8 @@ export default class Timer extends Component {
             }
             if (seconds === 0) {
                 if (minutes === 0) {
-                    clearInterval(this.myInterval)
+                    clearInterval(this.myInterval);
+                    this.handleChange();
                 } else {
                     this.setState(({ minutes }) => ({
                         minutes: minutes - 1,
@@ -30,6 +32,9 @@ export default class Timer extends Component {
 
     componentWillUnmount() {
         clearInterval(this.myInterval)
+    }
+    handleChange = () => {
+      this.props.timer(true);
     }
 
     render() {

@@ -15,20 +15,23 @@ function App() {
   const [palindromeDecoupe,setPalindromeDecoupe] = useState([]);
   const [scoreJoueur, setScoreJoueur] = useState(0);
 
-  const debutJeu = (listePalindrome) =>{
-    setJeu({start:false, end: false, win: false});
+  const debutJeu = () =>{
+    setJeu({start:false, end: false, win: false, endTime: false});
     setReponseJoueur('');
     const motAleatoire = palindromeAleatoire(listePalindrome)
     setReponsePalindrome(motAleatoire);
     const motDcoupe = decouperLettre(motAleatoire);
     setPalindromeDecoupe(melangerLettre(motDcoupe));
-    setJeu({...jeu, start:true, end:false,win: false})
+    setJeu({...jeu, start:true, end:false,win: false, endTime: false})
   }
   const joueurJoue = (lettre) => {
     if(!(reponseJoueur.length < reponsePalindrome.length) ){
       setJeu({...jeu, end: true})
     }
-    const updateRepJ = reponseJoueur + lettre
+    if(jeu.endTime === true){
+      setJeu({...jeu, end: true})
+    }
+    const updateRepJ = reponseJoueur + lettre;
     setReponseJoueur(updateRepJ);
     if(checkIfPlayerWin(updateRepJ,reponsePalindrome)){
       setJeu({...jeu, win: true});
@@ -36,7 +39,11 @@ function App() {
       setScoreJoueur(majScore)
     };
   }
-
+  const checkTimer = (status) => {
+    if(status){
+      setJeu({...jeu, end: true, endTime: true});
+    }  
+  }
   const afficherLettre = () => (
     <div>
       {
@@ -66,21 +73,24 @@ function App() {
 
   return (
     <div>
-     { jeu.start ? <div><Timer/><Score score={scoreJoueur}/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
-      {jeu.end ? <div><p> Votre réponse : {reponseJoueur}</p> <p> La bonne réponse etait {reponsePalindrome}</p></div> : ''}
+     { jeu.start ? <div><Timer minutes={0} secondes={1} timer={checkTimer} /><Score score={scoreJoueur}/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
+      {jeu.end || jeu.endTime ? <div><p> Votre réponse : {reponseJoueur}</p> <p> La bonne réponse etait {reponsePalindrome}</p></div> : ''}
       {jeu.start && !jeu.end ? afficherLettre() : ''}
       {jeu.start && !jeu.end && !jeu.win ? supprimerLettre() : ''}
-      {jeu.win ? 
+      {(jeu.win && !jeu.endTime) ? 
       <div>
         <p>Felicitation vous avez gagne !!!</p> 
         <button onClick={() => {debutJeu(listePalindrome)} }>
-          Play again ?
+          Un autre palindrome !
         </button>
       </div>
       : ''
       }
       {
-        !jeu.start || jeu.end ?  <button onClick={() => {debutJeu(listePalindrome)} }>Start !</button> :''
+        !jeu.start || (jeu.end && !jeu.endTime) ?  <button onClick={() => {debutJeu(listePalindrome)} }>Start !</button> :''
+      }
+      {
+        jeu.endTime ? <button onClick={() => window.location.reload(false)}>Play Again ?</button> :''
       }
         <div>
  </div>  
