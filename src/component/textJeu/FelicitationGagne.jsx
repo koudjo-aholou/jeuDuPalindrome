@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FelicitationGagne = ({ continuerJeu }) => (
   <div>
@@ -11,5 +12,13 @@ const FelicitationGagne = ({ continuerJeu }) => (
     </button>
   </div>
 );
+
+FelicitationGagne.propTypes = {
+  continuerJeu: PropTypes.func,
+};
+
+FelicitationGagne.defaultProps = {
+  continuerJeu: () => {},
+};
 
 export default FelicitationGagne;

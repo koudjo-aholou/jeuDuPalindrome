@@ -16,7 +16,7 @@ SupprimerLettre.propTypes = {
 };
 
 SupprimerLettre.defaultProps = {
-  suppLettre: null,
+  suppLettre: () => {},
 };
 
 export default SupprimerLettre;
