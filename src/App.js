@@ -7,6 +7,10 @@ import {listePalindrome} from './data';
 import { palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin } from './module/module';
 import LettreChoisie from './LettreChoisie';
 import Score from './Score';
+import AfficherLettre from './component/lettre/AfficherLettre';
+import SupprimerLettre from './component/lettre/SupprimerLettre';
+import Texte from './component/textJeu/Texte';
+import FelicitationGagne from './component/textJeu/FelicitationGagne';
 
 function App() {
   const [reponsePalindrome, setReponsePalindrome] = useState('');
@@ -16,13 +20,17 @@ function App() {
   const [scoreJoueur, setScoreJoueur] = useState(0);
 
   const debutJeu = () =>{
-    setJeu({start:false, end: false, win: false, endTime: false});
+    setJeu({start:false, end: false, win: false, endTime: false, bug:false});
     setReponseJoueur('');
-    const motAleatoire = palindromeAleatoire(listePalindrome)
-    setReponsePalindrome(motAleatoire);
-    const motDcoupe = decouperLettre(motAleatoire);
-    setPalindromeDecoupe(melangerLettre(motDcoupe));
-    setJeu({...jeu, start:true, end:false,win: false, endTime: false})
+    try {
+      const motAleatoire = palindromeAleatoire(listePalindrome)
+      setReponsePalindrome(motAleatoire);
+      const motDcoupe = decouperLettre(motAleatoire);
+      setPalindromeDecoupe(melangerLettre(motDcoupe));
+      setJeu({...jeu, start:true, end:false,win: false, endTime: false})
+    } catch (error) {
+      setJeu({start:false, end:false,win: false, endTime: false, bug:true})
+    }
   }
   const joueurJoue = (lettre) => {
     if(!(reponseJoueur.length < reponsePalindrome.length) ){
@@ -44,46 +52,27 @@ function App() {
       setJeu({...jeu, end: true, endTime: true});
     }  
   }
-  const afficherLettre = () => (
-    <div>
-      {
-        palindromeDecoupe.map((lettre,i) => {
-          return <button 
-          key={`${lettre.toString()}${i}`}
-          onClick={() => joueurJoue(lettre)
-          }>
-            {lettre}
-            </button>
-        })
-      }
-    </div>
-  )
 
-  const supprimerLettre = () => (
-    <div>
-    {
-        <button 
-        onClick={() => setReponseJoueur('')
-      }>
-        Effacer
-      </button>
+  const handleClickLetter = (lettre) => {
+    joueurJoue(lettre)
+  }
+  const handleClickSuppLettre = (clear) =>{
+    if(clear === true){
+      setReponseJoueur('');
     }
-  </div>
-  )
+  }
+  const handleClickContinuer = (continuer) => {
+    debutJeu(listePalindrome);
+  }
 
   return (
     <div>
      { jeu.start ? <div><Timer minutes={0} secondes={1} timer={checkTimer} /><Score score={scoreJoueur}/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
-      {jeu.end || jeu.endTime ? <div><p> Votre réponse : {reponseJoueur}</p> <p> La bonne réponse etait {reponsePalindrome}</p></div> : ''}
-      {jeu.start && !jeu.end ? afficherLettre() : ''}
-      {jeu.start && !jeu.end && !jeu.win ? supprimerLettre() : ''}
+      {jeu.end || jeu.endTime ? <div><Texte titre={'Votre réponse :'} reponse={reponseJoueur}/><Texte titre={'La bonne réponse etait : '} reponse={reponsePalindrome}/></div> : ''}
+      {jeu.start && !jeu.end ? <AfficherLettre palindrome={palindromeDecoupe} whichLetter={handleClickLetter}/> : ''}
+      {jeu.start && !jeu.end && !jeu.win ? <SupprimerLettre suppLettre={handleClickSuppLettre}/> : ''}
       {(jeu.win && !jeu.endTime) ? 
-      <div>
-        <p>Felicitation vous avez gagne !!!</p> 
-        <button onClick={() => {debutJeu(listePalindrome)} }>
-          Un autre palindrome !
-        </button>
-      </div>
+      <FelicitationGagne  continuerJeu={handleClickContinuer}/>
       : ''
       }
       {
@@ -91,6 +80,9 @@ function App() {
       }
       {
         jeu.endTime ? <button onClick={() => window.location.reload(false)}>Play Again ?</button> :''
+      }
+      {
+        jeu.bug ? <Texte titre='Oupss, il y a une erreur !' reponse='Raffraichissez la page'/>:''
       }
         <div>
  </div>  
