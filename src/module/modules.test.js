@@ -13,20 +13,24 @@ describe('MODULE', () => {
   });
 
   it('Should return an Error if there a falsy value in the list', () => {
-    const listPalindrome = [null, undefined]
+    const listPalindrome = [null, undefined,'']
     expect(() => palindromeAleatoire(listPalindrome)).toThrow();
   });
 
-  it('Should return an Error if list is not a list', () => {
+  it('Should return an Error if the palindrome\'s bucketlist is not a list', () => {
     const listPalindrome = 'Stats';
     expect(() => palindromeAleatoire(listPalindrome)).toThrow();
   });
   
-  it('Should create a list of letter', () => {
+  it('Should create a list of letters', () => {
     const palindrome = 'Stats';
     const palindromeDecoupe = decouperLettre(palindrome)
     expect(typeof(palindromeDecoupe)).toEqual('object');
     expect(Array.isArray(palindromeDecoupe)).toEqual(true);
+  });
+  it('Should throw error because word without letters', () => {
+    const palindrome = '';
+    expect(() => decouperLettre(palindrome)).toThrow();
   });
   
   it('Should return an Error if palindrome is a list', () => {
@@ -35,7 +39,7 @@ describe('MODULE', () => {
   });
   
   
-  it('Should return an Error if palindrome decoupe is not list', () => {
+  it('Should return an Error if palindrome cuted is not a list', () => {
     const palindromeDecoupe = 'Stats';
     expect(() => melangerLettre(palindromeDecoupe)).toThrow();
   });

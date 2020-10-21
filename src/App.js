@@ -3,7 +3,7 @@ import './App.css';
 import Regle from './Regle';
 import Timer from './Timer';
 
-import {listePalindrome} from './data';
+import {listePalindrome, startGame} from './data';
 import { palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin } from './module/module';
 import LettreChoisie from './LettreChoisie';
 import Score from './Score';
@@ -20,16 +20,16 @@ function App() {
   const [scoreJoueur, setScoreJoueur] = useState(0);
 
   const debutJeu = () =>{
-    setJeu({start:false, end: false, win: false, endTime: false, bug:false});
+    setJeu({startGame });
     setReponseJoueur('');
     try {
       const motAleatoire = palindromeAleatoire(listePalindrome)
       setReponsePalindrome(motAleatoire);
       const motDcoupe = decouperLettre(motAleatoire);
       setPalindromeDecoupe(melangerLettre(motDcoupe));
-      setJeu({...jeu, start:true, end:false,win: false, endTime: false})
+      setJeu({...startGame, start:true})
     } catch (error) {
-      setJeu({start:false, end:false,win: false, endTime: false, bug:true})
+      setJeu({...startGame, bug:true})
     }
   }
   const joueurJoue = (lettre) => {
@@ -67,22 +67,49 @@ function App() {
 
   return (
     <div>
-     { jeu.start ? <div><Timer minutes={0} secondes={1} timer={checkTimer} /><Score score={scoreJoueur}/><Regle/><LettreChoisie lettres={reponseJoueur}/></div>: <p>Cliquez pour commencer une partie</p>}
-      {jeu.end || jeu.endTime ? <div><Texte titre={'Votre réponse :'} reponse={reponseJoueur}/><Texte titre={'La bonne réponse etait : '} reponse={reponsePalindrome}/></div> : ''}
-      {jeu.start && !jeu.end ? <AfficherLettre palindrome={palindromeDecoupe} whichLetter={handleClickLetter}/> : ''}
-      {jeu.start && !jeu.end && !jeu.win ? <SupprimerLettre suppLettre={handleClickSuppLettre}/> : ''}
-      {(jeu.win && !jeu.endTime) ? 
-      <FelicitationGagne  continuerJeu={handleClickContinuer}/>
+     { jeu.start ? 
+      <div>
+        <Timer minutes={0} secondes={1} timer={checkTimer} />
+        <Score score={scoreJoueur}/>
+        <Regle/>
+        <LettreChoisie lettres={reponseJoueur}/>
+      </div>
+    : 
+      <p>Cliquez pour commencer une partie</p>
+    }
+      { jeu.end || jeu.endTime ? 
+        <div>
+          <Texte titre={'Votre réponse :'} reponse={reponseJoueur}/>
+          <Texte titre={'La bonne réponse etait : '} reponse={reponsePalindrome}/>
+        </div> 
+      : ''
+      }
+      { jeu.start && !jeu.end ? 
+        <AfficherLettre palindrome={palindromeDecoupe} whichLetter={handleClickLetter}/> 
+      : ''
+      }
+      { jeu.start && !jeu.end && !jeu.win ? 
+        <SupprimerLettre suppLettre={handleClickSuppLettre}/> 
+      : ''
+      }
+      { (jeu.win && !jeu.endTime) ? 
+        <FelicitationGagne  continuerJeu={handleClickContinuer}/>
       : ''
       }
       {
-        !jeu.start || (jeu.end && !jeu.endTime) ?  <button onClick={() => {debutJeu(listePalindrome)} }>Start !</button> :''
+       !jeu.start || (jeu.end && !jeu.endTime) ?  
+          <button onClick={() => {debutJeu(listePalindrome)} }>Start !</button> 
+      :''
       }
       {
-        jeu.endTime ? <button onClick={() => window.location.reload(false)}>Play Again ?</button> :''
+       jeu.endTime ? 
+        <button onClick={() => window.location.reload(false)}>Play Again ?</button> 
+      :''
       }
       {
-        jeu.bug ? <Texte titre='Oupss, il y a une erreur !' reponse='Raffraichissez la page'/>:''
+      jeu.bug ? 
+        <Texte titre='Oupss, il y a une erreur !' reponse='Raffraichissez la page'/>
+        :''
       }
         <div>
  </div>  

@@ -128,3 +128,5 @@ export const listePalindrome = [
 'Nozon',
 'Têt',
 ];
+
+export const startGame = {start:false, end: false, win: false, endTime: false, bug:false};

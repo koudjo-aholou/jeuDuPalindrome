@@ -8,7 +8,7 @@ export const palindromeAleatoire = (listePalindrome) =>{
       const max = listePalindrome.length;
       const genererIndex = Math.ceil(Math.random() * (max - 1));
       const palindrome = listePalindrome[genererIndex];
-      if(palindrome === null || palindrome === undefined) {
+      if(palindrome === null || palindrome === undefined || palindrome === '') {
         throw new Error('Bug')
       }
       return palindrome;
@@ -22,7 +22,7 @@ export const palindromeAleatoire = (listePalindrome) =>{
  * @returns {Array<string>| Error} 
  */
 export const decouperLettre = (mot) =>{
-  if(typeof mot === 'string'){
+  if(typeof mot === 'string' && mot.length > 1){
     return mot.split('');
   }
   throw new Error('Bug')
