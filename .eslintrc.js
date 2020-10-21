@@ -3,11 +3,11 @@ module.exports = {
     browser: true,
     es2020: true,
     node: true,
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    "jest"
   ],
   parserOptions: {
     ecmaFeatures: {
