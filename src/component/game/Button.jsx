@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const ButtonJeu = ({ handleClick, titre }) => (
   <div>
     <button
+      className="commencerTexte"
       type="button"
       onClick={() => handleClick()}
     >

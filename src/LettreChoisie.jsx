@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 function LettreChoisie({ lettres }) {
   return (
-    <p>
+    <p className="titre">
       Lettres choisies :
+      {' '}
       {lettres}
     </p>
   );

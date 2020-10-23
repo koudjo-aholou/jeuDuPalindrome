@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SupprimerLettre = ({ suppLettre }) => (
-  <div>
+  <div className="suppLettreStyle">
     <button
       type="button"
       onClick={() => suppLettre(true)}

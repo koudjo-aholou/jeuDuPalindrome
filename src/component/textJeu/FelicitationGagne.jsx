@@ -6,6 +6,7 @@ const FelicitationGagne = ({ continuerJeu }) => (
     <p>Felicitation vous avez gagne !!!</p>
     <button
       type="button"
+      className="commencerTexte"
       onClick={() => continuerJeu(true)}
     >
       Un autre palindrome !

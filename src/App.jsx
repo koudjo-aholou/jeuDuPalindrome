@@ -69,7 +69,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="space">
       { jeu.start
         ? (
           <Game reponseJoueur={reponseJoueur} checkTimer={checkTimer} scoreJoueur={scoreJoueur} />
@@ -96,12 +96,12 @@ function App() {
         : ''}
       {
       (jeu.end && !jeu.endTime)
-        ? <button type="button" onClick={() => { debutJeu(listePalindrome); }}>Start</button>
+        ? <button className="commencerTexte" type="button" onClick={() => { debutJeu(listePalindrome); }}>Continuer</button>
         : ''
       }
       {
        jeu.endTime
-         ? <button type="button" onClick={() => window.location.reload(false)}>Play Again ?</button>
+         ? <button className="commencerTexte" type="button" onClick={() => window.location.reload(false)}>Play Again ?</button>
          : ''
       }
       {

@@ -6,8 +6,8 @@ export default class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minutes: 0,
-      seconds: 10,
+      minutes: 5,
+      seconds: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }

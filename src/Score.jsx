@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Score({ score }) {
   return (
     <div>
-      <p>
+      <p className="titre">
         {' '}
         Score :
         {' '}

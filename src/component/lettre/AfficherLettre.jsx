@@ -6,6 +6,7 @@ const AfficherLettre = ({ palindrome, whichLetter }) => (
     {
       palindrome.map((lettre, i) => (
         <button
+          className="affLettre lettreStyle"
           type="button"
           key={`${lettre.toString()}${i + 4}`}
           onClick={() => whichLetter(lettre)}
