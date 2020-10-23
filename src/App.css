@@ -1,15 +1,32 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  color: white;
+  background:hsl(210deg, 30%, 8%);
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+
+#root{
+  justify-content: center;
+  display: flex;
+}
 .home {
   flex-flow: column wrap;
   display: flex;
   align-items: center;
+ 
 }
 
-.regle {
-
+.regles {
+  color:white;
 }
+
 
 .titreRegles{
   text-align: center;
+  color:white;
 }
 
 
