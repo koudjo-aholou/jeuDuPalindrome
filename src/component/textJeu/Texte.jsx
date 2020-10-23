@@ -6,7 +6,9 @@ const Texte = ({ titre, reponse }) => (
     {' '}
     {titre}
     {' '}
-    {reponse}
+    {
+      reponse
+    }
   </p>
 );
 
@@ -17,6 +19,6 @@ Texte.propTypes = {
 
 Texte.defaultProps = {
   titre: '',
-  reponse: 'Pas de reponse',
+  reponse: '',
 };
 export default Texte;

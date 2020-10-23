@@ -3,8 +3,8 @@ import React from 'react';
 
 function Regle() {
   return (
-    <div>
-      Règles :
+    <div className="regles">
+      <p className="titreRegles">Règles :</p>
       <ul>
         <li>Le but du jeu est de créer un palindrome qui existe dans le dictionnaire (mot ou prénom) avec les lettres proposées.</li>
         <li>Chaque lettre à disposition ne revient qu&apos;une seule fois dans le mot.</li>

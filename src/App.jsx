@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
-import Regle from './Regle';
-import Timer from './Timer';
+import Game from './Game';
 
 import { listePalindrome, startGame } from './data';
 import {
   palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin,
 } from './module/module';
-import LettreChoisie from './LettreChoisie';
-import Score from './Score';
 import AfficherLettre from './component/lettre/AfficherLettre';
 import SupprimerLettre from './component/lettre/SupprimerLettre';
 import Texte from './component/textJeu/Texte';
 import FelicitationGagne from './component/textJeu/FelicitationGagne';
+import Accueil from './Accueil';
 
 function App() {
   const [reponsePalindrome, setReponsePalindrome] = useState('');
@@ -66,23 +64,18 @@ function App() {
   const handleClickContinuer = () => {
     debutJeu(listePalindrome);
   };
+  const handleClickCommencerJeu = () => {
+    debutJeu(listePalindrome);
+  };
 
   return (
     <div>
       { jeu.start
         ? (
-          <div>
-            <Timer minutes={0} secondes={1} timer={checkTimer} />
-            <Score score={scoreJoueur} />
-            <Regle />
-            <LettreChoisie lettres={reponseJoueur} />
-          </div>
+          <Game reponseJoueur={reponseJoueur} checkTimer={checkTimer} scoreJoueur={scoreJoueur} />
         )
         : (
-          <div>
-            <Regle />
-            <p>Cliquez pour commencer une partie !</p>
-          </div>
+          <Accueil handleClickCommencerJeu={handleClickCommencerJeu} />
         )}
       { jeu.end || jeu.endTime
         ? (
@@ -102,9 +95,9 @@ function App() {
         ? <FelicitationGagne continuerJeu={handleClickContinuer} />
         : ''}
       {
-       !jeu.start || (jeu.end && !jeu.endTime)
-         ? <button type="button" onClick={() => { debutJeu(listePalindrome); }}>Start</button>
-         : ''
+      (jeu.end && !jeu.endTime)
+        ? <button type="button" onClick={() => { debutJeu(listePalindrome); }}>Start</button>
+        : ''
       }
       {
        jeu.endTime
