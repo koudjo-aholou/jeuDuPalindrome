@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import Game from './Game';
 
 import { listePalindrome, startGame } from './data';
@@ -42,7 +42,7 @@ function App() {
     const updateRepJ = reponseJoueur + lettre;
     setReponseJoueur(updateRepJ);
     if (checkIfPlayerWin(updateRepJ, reponsePalindrome)) {
-      setJeu({ ...jeu, win: true });
+      setJeu({ ...jeu, end: true, win: true });
       const majScore = scoreJoueur + 1;
       setScoreJoueur(majScore);
     }
@@ -95,7 +95,7 @@ function App() {
         ? <FelicitationGagne continuerJeu={handleClickContinuer} />
         : ''}
       {
-      (jeu.end && !jeu.endTime)
+      (jeu.end && !jeu.endTime && !jeu.win)
         ? <button className="commencerTexte" type="button" onClick={() => { debutJeu(listePalindrome); }}>Continuer</button>
         : ''
       }

@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "eslint-plugin-react": "^7.20.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -20,7 +21,10 @@
     "lint": "eslint ."
   },
   "eslintConfig": {
-    "extends": ["react-app","jest"]
+    "extends": [
+      "react-app",
+      "jest"
+    ]
   },
   "husky": {
     "hooks": {
@@ -29,7 +33,9 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": ["eslint . --fix"]
+    "*.+(js|jsx)": [
+      "eslint . --fix"
+    ]
   },
   "browserslist": {
     "production": [
