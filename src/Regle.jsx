@@ -5,7 +5,7 @@ function Regle() {
   return (
     <div className="regles">
       <p className="titreRegles titre">Règles :</p>
-      <ul>
+      <ul className="paragraphe">
         <li>Le but du jeu est de créer un palindrome qui existe dans le dictionnaire (mot ou prénom) avec les lettres proposées.</li>
         <li>Chaque lettre à disposition ne revient qu&apos;une seule fois dans le mot.</li>
         <li>Tous les palindromes commencent par une majuscule.</li>

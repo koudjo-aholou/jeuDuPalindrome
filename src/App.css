@@ -59,7 +59,9 @@ html, body {
   font-size: 16px;
   min-width: 80px;
 }
-
+.paragraphe{
+  max-width: 680px;
+}
 .regles {
   color:white;
 }
