@@ -79,7 +79,7 @@ function App() {
         )}
       { jeu.end || jeu.endTime
         ? (
-          <div>
+          <div className="containerRep">
             <Texte titre="Votre réponse :" reponse={reponseJoueur} />
             <Texte titre="La bonne réponse etait : " reponse={reponsePalindrome} />
           </div>

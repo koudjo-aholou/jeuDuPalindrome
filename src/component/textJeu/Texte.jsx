@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Texte = ({ titre, reponse }) => (
-  <p>
-    {' '}
-    {titre}
-    {' '}
-    {
-      reponse
-    }
-  </p>
+  <div>
+    <p>
+      {' '}
+      {titre}
+      {' '}
+      {
+        reponse
+      }
+    </p>
+  </div>
 );
 
 Texte.propTypes = {
