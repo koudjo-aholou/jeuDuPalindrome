@@ -17,7 +17,9 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-
+h1{
+  font-size: 1.6em;
+}
 #root{
  justify-content: center;
  display: flex;
@@ -94,7 +96,7 @@ body {
 }
 
 .titre{
-  font-size: 2em;
+  font-size: 1.3em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
@@ -107,3 +109,8 @@ body {
 }
 
 
+@media screen and (max-height: 700px) {
+  .cacher{
+    display: none;
+  }
+}

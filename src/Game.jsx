@@ -10,7 +10,9 @@ const Jeu = ({ reponseJoueur, checkTimer, scoreJoueur }) => (
   <div className="jeu">
     <Timer minutes={0} secondes={1} timer={checkTimer} />
     <Score score={scoreJoueur} />
-    <Regle />
+    <div className="cacher">
+      <Regle />
+    </div>
     <LettreChoisie lettres={reponseJoueur} />
   </div>
 );

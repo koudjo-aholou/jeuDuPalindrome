@@ -109,7 +109,6 @@ function App() {
         ? <Texte titre="Oupss, il y a une erreur !" reponse="Raffraichissez la page" />
         : ''
       }
-      <div />
     </div>
   );
 }
