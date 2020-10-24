@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 const AfficherLettre = ({ palindrome, whichLetter }) => (
   <div className="wrapper">
     {
-      palindrome.map((lettre, i) => (
-        <div className="container">
+      palindrome.map((lettre) => (
+        <div
+          className="container"
+          key={`${lettre.toString()}${Math.random() * 1000 + 1}`}
+        >
           <button
             className="affLettre lettreStyle"
             type="button"
-            key={`${lettre.toString()}${i + 4}`}
+            key={`${lettre.toString()}${Math.random() * 1000 + 1}`}
             onClick={() => whichLetter(lettre)}
           >
             {lettre}

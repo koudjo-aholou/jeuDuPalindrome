@@ -52,6 +52,7 @@ export default class Timer extends Component {
           : (
             <h1>
               Temps Restant :
+              {' '}
               {minutes}
               :
               {seconds < 10 ? `0${seconds}` : seconds}

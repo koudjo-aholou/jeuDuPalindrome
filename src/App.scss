@@ -1,17 +1,26 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  color: white;
-  background:hsl(210deg, 30%, 8%);
-  display: flex;
+html{
+  height: 100vh;
   justify-content: center;
-  flex-flow: column wrap;
+  align-items: center;
+  display: flex;
+  color: white;
+  margin: 0;
+  background:hsl(210deg, 30%, 8%);
+}
+body {
+  height: 600px;
+  width:80%;
+ // background-color: #151F27;
+ background-image: linear-gradient(#12324c, #0a706b);
+  box-sizing: border-box;
+  border-radius: 10vh 20vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #root{
-  justify-content: center;
-  display: flex;
-//  min-height: 600px;
+ justify-content: center;
+ display: flex;
 }
  .space{
  // min-height: 700px;
@@ -78,7 +87,7 @@ html, body {
   min-width: 80px;
 }
 .paragraphe{
-  max-width: 680px;
+  max-width: 720px;
 }
 .regles {
   color:white;
