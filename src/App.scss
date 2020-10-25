@@ -8,14 +8,13 @@ html{
   background:hsl(210deg, 30%, 8%);
 }
 body {
-  height: 600px;
+ // height: 600px;
   width:80%;
  // background-color: #151F27;
  background-image: linear-gradient(#12324c, #0a706b);
   box-sizing: border-box;
   border-radius: 10vh 20vh;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
 }
 h1{
   font-size: 1.6em;
@@ -24,9 +23,7 @@ h1{
  justify-content: center;
  display: flex;
 }
- .space{
- // min-height: 700px;
- }
+
 .wrapper{
   max-width: 700px;
   display: flex;
@@ -37,10 +34,13 @@ h1{
   width: 23%;
   justify-content: center;
   align-items: center;
-  display: flex;
-  margin-top: 1rem;
+  margin: 1rem;
 }
-
+.containerST{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .home {
   flex-flow: column wrap;
   display: flex;
@@ -106,6 +106,13 @@ h1{
 .titreRegles{
   text-align: center;
   color:white;
+}
+.containerLJ{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  height: 282px;
 }
 
 

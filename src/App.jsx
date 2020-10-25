@@ -6,10 +6,6 @@ import { listePalindrome, startGame } from './data';
 import {
   palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin,
 } from './module/module';
-import AfficherLettre from './component/lettre/AfficherLettre';
-import SupprimerLettre from './component/lettre/SupprimerLettre';
-import Texte from './component/textJeu/Texte';
-import FelicitationGagne from './component/textJeu/FelicitationGagne';
 import Accueil from './Accueil';
 
 function App() {
@@ -67,49 +63,34 @@ function App() {
   const handleClickCommencerJeu = () => {
     debutJeu(listePalindrome);
   };
+  const handleClickFinDuJeu = () => {
+    window.location.reload(false);
+  };
 
   return (
-    <div className="space">
+    <>
       { jeu.start
         ? (
-          <Game reponseJoueur={reponseJoueur} checkTimer={checkTimer} scoreJoueur={scoreJoueur} />
+          <Game
+            reponseJoueur={reponseJoueur}
+            checkTimer={checkTimer}
+            scoreJoueur={scoreJoueur}
+            jeu={jeu}
+            palindromeDecoupe={palindromeDecoupe}
+            handleClickLetter={handleClickLetter}
+            handleClickSuppLettre={handleClickSuppLettre}
+            reponsePalindrome={reponsePalindrome}
+            handleClickContinuer={handleClickContinuer}
+            handleClickPerdu={handleClickContinuer}
+            handleClickFinDuJeu={handleClickFinDuJeu}
+          />
         )
         : (
-          <Accueil handleClickCommencerJeu={handleClickCommencerJeu} />
+          <Accueil
+            handleClickCommencerJeu={handleClickCommencerJeu}
+          />
         )}
-      { jeu.end || jeu.endTime
-        ? (
-          <div className="containerRep">
-            <Texte titre="Votre réponse :" reponse={reponseJoueur} />
-            <Texte titre="La bonne réponse etait : " reponse={reponsePalindrome} />
-          </div>
-        )
-        : ''}
-      { jeu.start && !jeu.end
-        ? <AfficherLettre palindrome={palindromeDecoupe} whichLetter={handleClickLetter} />
-        : ''}
-      { jeu.start && !jeu.end && !jeu.win
-        ? <SupprimerLettre suppLettre={handleClickSuppLettre} />
-        : ''}
-      { (jeu.win && !jeu.endTime)
-        ? <FelicitationGagne continuerJeu={handleClickContinuer} />
-        : ''}
-      {
-      (jeu.end && !jeu.endTime && !jeu.win)
-        ? <button className="commencerTexte" type="button" onClick={() => { debutJeu(listePalindrome); }}>Continuer</button>
-        : ''
-      }
-      {
-       jeu.endTime
-         ? <button className="commencerTexte" type="button" onClick={() => window.location.reload(false)}>Play Again ?</button>
-         : ''
-      }
-      {
-      jeu.bug
-        ? <Texte titre="Oupss, il y a une erreur !" reponse="Raffraichissez la page" />
-        : ''
-      }
-    </div>
+    </>
   );
 }
 
