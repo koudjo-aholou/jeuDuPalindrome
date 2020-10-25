@@ -6,6 +6,7 @@ function LettreChoisie({ lettres }) {
     <p className="titre">
       Lettres choisies :
       {' '}
+      <br />
       {lettres}
     </p>
   );
