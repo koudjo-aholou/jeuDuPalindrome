@@ -70,10 +70,14 @@ Jeu.propTypes = {
     endTime: PropTypes.bool.isRequired,
     bug: PropTypes.bool.isRequired,
   }),
-  palindromeDecoupe: PropTypes.func,
+  palindromeDecoupe: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+    ]),
+  ),
   handleClickLetter: PropTypes.func,
   handleClickSuppLettre: PropTypes.func,
-  reponsePalindrome: PropTypes.func,
+  reponsePalindrome: PropTypes.string,
   handleClickContinuer: PropTypes.func,
   handleClickPerdu: PropTypes.func,
   handleClickFinDuJeu: PropTypes.func,
