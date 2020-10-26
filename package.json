@@ -30,7 +30,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm jest --watchAll"
+      "pre-push": "npm run jest --watchAll"
     }
   },
   "lint-staged": {
