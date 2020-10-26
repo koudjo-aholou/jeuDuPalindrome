@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function LettreChoisie({ lettres }) {
   return (
-    <p className="titre">
+    <p className="titre containerAffLettre">
       Lettres choisies :
       {' '}
       <br />

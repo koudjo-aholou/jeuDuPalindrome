@@ -28,9 +28,6 @@ const Jeu = ({
       { jeu.start && !jeu.end
         ? <AfficherLettre palindrome={palindromeDecoupe} whichLetter={handleClickLetter} />
         : ''}
-      { jeu.start && !jeu.end && !jeu.win
-        ? <SupprimerLettre suppLettre={handleClickSuppLettre} />
-        : ''}
       { jeu.end || jeu.endTime
         ? (
           <div className="containerRep">
@@ -58,6 +55,9 @@ const Jeu = ({
          : ''
     }
     </div>
+    { jeu.start && !jeu.end && !jeu.win
+      ? <SupprimerLettre suppLettre={handleClickSuppLettre} />
+      : ''}
   </div>
 );
 

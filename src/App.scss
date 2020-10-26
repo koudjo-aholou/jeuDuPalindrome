@@ -24,6 +24,10 @@ h1{
  display: flex;
 }
 
+.jeu{
+  min-height: 680px;
+}
+
 .wrapper{
   max-width: 700px;
   display: flex;
@@ -48,7 +52,6 @@ h1{
 }
 .affLettre{
     width: 40px;
-    height: 40px;
     margin-left: 2rem;
     margin-right: 2rem;
 }
@@ -103,9 +106,7 @@ h1{
   margin-inline-end: 0px;
   font-weight: bold;
 }
-p.titre{
-  height: 40px;
-}
+
 .titreRegles{
   text-align: center;
   color:white;
@@ -121,9 +122,20 @@ p.titre{
   height: 282px;
 }
 
-
+.containerAffLettre{
+    height: 40px;
+    padding-bottom: 1rem;
+}
 @media screen and (max-height: 700px) {
   .cacher{
     display: none;
+  }
+  .jeu, .home{
+    min-height: 560px;
+  }
+  .home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
