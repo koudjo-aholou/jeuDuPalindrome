@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+it('Should display the element while allow to start the game', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonElement = getByText(/^Commencer une partie/i, { selector: 'button.commencerTexte' });
+  expect(buttonElement).toBeInTheDocument();
 });

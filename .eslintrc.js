@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     jest: true,
   },
+  ignorePatterns: ["/build/*"],
   extends: [
     'plugin:react/recommended',
     'airbnb',
