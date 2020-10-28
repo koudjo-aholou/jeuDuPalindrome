@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import Game from './Game';
 
@@ -7,13 +7,21 @@ import {
   palindromeAleatoire, decouperLettre, melangerLettre, checkIfPlayerWin,
 } from './module/module';
 import Accueil from './Accueil';
+import Spinner from './component/game/Spinner';
 
 function App() {
+  const [isLoading, setLoading] = useState(true);
   const [reponsePalindrome, setReponsePalindrome] = useState('');
   const [reponseJoueur, setReponseJoueur] = useState('');
   const [jeu, setJeu] = useState({});
   const [palindromeDecoupe, setPalindromeDecoupe] = useState([]);
   const [scoreJoueur, setScoreJoueur] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
 
   const debutJeu = () => {
     setJeu({ startGame });
@@ -67,8 +75,12 @@ function App() {
     window.location.reload(false);
   };
 
+  if (isLoading) {
+    return (<Spinner />);
+  }
+
   return (
-    <>
+    <div className="game">
       { jeu.start
         ? (
           <Game
@@ -90,7 +102,7 @@ function App() {
             handleClickCommencerJeu={handleClickCommencerJeu}
           />
         )}
-    </>
+    </div>
   );
 }
 
