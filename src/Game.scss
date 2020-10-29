@@ -1,0 +1,17 @@
+.jeu{
+  min-height: 746px;
+}
+
+.containerST{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.containerLJ{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  height: 282px;
+}

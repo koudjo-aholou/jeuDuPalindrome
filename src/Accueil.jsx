@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import Regle from './Regle';
 import Texte from './component/textJeu/Texte';
-import ButtonJeu from './component/game/Button';
+import CommencerUnePartie from './component/game/CommencerPartie';
 
 const Accueil = ({ handleClickCommencerJeu }) => (
-  <div className="home">
+  <section id="accueil">
     <Regle />
     <Texte titre="Cliquez pour commencer une partie  !" />
-    <ButtonJeu handleClick={handleClickCommencerJeu} titre="Commencer une partie" />
-  </div>
+    <CommencerUnePartie handleClick={handleClickCommencerJeu} titre="Commencer une partie" />
+  </section>
 );
 
 Accueil.propTypes = {

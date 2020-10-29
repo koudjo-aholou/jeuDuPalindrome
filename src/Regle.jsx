@@ -3,7 +3,7 @@ import React from 'react';
 
 function Regle() {
   return (
-    <div className="regles">
+    <div id="regles">
       <p className="titreRegles titre">Règles :</p>
       <ul className="paragraphe">
         <li>Le but du jeu est de créer un palindrome qui existe dans le dictionnaire (mot ou prénom) avec les lettres proposées.</li>
