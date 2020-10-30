@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Regle from './Regle';
+import Regle from './component/game/Regle';
 import Texte from './component/textJeu/Texte';
 import CommencerUnePartie from './component/game/CommencerPartie';
 

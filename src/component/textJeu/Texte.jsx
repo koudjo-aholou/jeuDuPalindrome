@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Texte = ({ titre, reponse }) => (
+const Texte = ({ titre, reponse, roleId }) => (
   <div>
     <p>
-      {' '}
       {titre}
       {' '}
-      {
-        reponse
-      }
+      <span id={roleId}>{reponse}</span>
     </p>
   </div>
 );
@@ -17,10 +14,12 @@ const Texte = ({ titre, reponse }) => (
 Texte.propTypes = {
   titre: PropTypes.string,
   reponse: PropTypes.string,
+  roleId: PropTypes.string,
 };
 
 Texte.defaultProps = {
   titre: '',
   reponse: '',
+  roleId: '',
 };
 export default Texte;

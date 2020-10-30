@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Regle from './Regle';
-import Score from './Score';
-import LettreChoisie from './LettreChoisie';
-import Timer from './Timer';
+import Regle from './component/game/Regle';
+import Score from './component/game/Score';
+import LettreChoisie from './component/lettre/LettreChoisie';
+import Timer from './component/minuteur/Timer';
 import AfficherLettre from './component/lettre/AfficherLettre';
 import SupprimerLettre from './component/lettre/SupprimerLettre';
 import Texte from './component/textJeu/Texte';
 import FelicitationGagne from './component/textJeu/FelicitationGagne';
+import Btn from './component/game/Btn';
 
 const Jeu = ({
   reponseJoueur, checkTimer, scoreJoueur, jeu, palindromeDecoupe,
@@ -17,7 +18,7 @@ const Jeu = ({
 }) => (
   <div className="jeu">
     <div className="containerST">
-      <Timer minutes={0} secondes={1} timer={checkTimer} />
+      <Timer timer={checkTimer} />
       <Score score={scoreJoueur} />
     </div>
     <div className="cacher">
@@ -30,9 +31,9 @@ const Jeu = ({
         : ''}
       { jeu.end || jeu.endTime
         ? (
-          <div className="containerRep">
+          <div className="containerRep" id="finPartie">
             <Texte titre="Votre réponse :" reponse={reponseJoueur} />
-            <Texte titre="La bonne réponse etait : " reponse={reponsePalindrome} />
+            <Texte titre="La bonne réponse etait : " reponse={reponsePalindrome} roleId="reponsePalindrome" />
           </div>
         )
         : ''}
@@ -46,12 +47,12 @@ const Jeu = ({
       }
       {
       (jeu.end && !jeu.endTime && !jeu.win)
-        ? <button className="commencerTexte" type="button" onClick={() => handleClickPerdu()}>Continuer</button>
+        ? <Btn handleClick={handleClickPerdu} titre="Continuer" idStyle="continuerJeu" classStyle="commencerTexte" />
         : ''
     }
       {
        jeu.endTime
-         ? <button className="commencerTexte" type="button" onClick={() => handleClickFinDuJeu()}>Play Again ?</button>
+         ? <Btn handleClick={handleClickFinDuJeu} titre="Play Again ?" idStyle="FinJeu" classStyle="commencerTexte" />
          : ''
     }
     </div>

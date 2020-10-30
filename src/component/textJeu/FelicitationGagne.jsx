@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FelicitationGagne = ({ continuerJeu }) => (
-  <div>
+  <div id="joueurAgagne">
     <p>Felicitation vous avez gagne !!!</p>
     <button
       type="button"

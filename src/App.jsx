@@ -10,7 +10,7 @@ import Accueil from './Accueil';
 import Spinner from './component/game/Spinner';
 
 function App() {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [reponsePalindrome, setReponsePalindrome] = useState('');
   const [reponseJoueur, setReponseJoueur] = useState('');
   const [jeu, setJeu] = useState({});
@@ -18,9 +18,11 @@ function App() {
   const [scoreJoueur, setScoreJoueur] = useState(0);
 
   useEffect(() => {
+    let isMounted = true;
     setTimeout(() => {
-      setLoading(false);
+      if (isMounted) setIsLoading(false);
     }, 500);
+    return () => { isMounted = false; };
   }, []);
 
   const debutJeu = () => {
