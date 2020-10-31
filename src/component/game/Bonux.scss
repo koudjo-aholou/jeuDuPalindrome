@@ -1,0 +1,18 @@
+
+#bonux{
+  visibility:hidden;
+}
+
+#showhim{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 10vw;
+  height: 20vh;
+  border: solid;
+}
+
+#showhim:hover #bonux {
+  position: absolute;
+  visibility:visible;
+}
